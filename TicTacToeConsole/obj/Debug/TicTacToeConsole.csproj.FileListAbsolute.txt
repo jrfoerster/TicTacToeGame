@@ -1,0 +1,10 @@
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeConsole\bin\Debug\TicTacToeConsole.exe.config
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeConsole\bin\Debug\TicTacToeConsole.exe
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeConsole\bin\Debug\TicTacToeConsole.pdb
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeConsole\bin\Debug\TicTacToeLibrary.dll
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeConsole\bin\Debug\TicTacToeLibrary.pdb
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeConsole\obj\Debug\TicTacToeConsole.csproj.CoreCompileInputs.cache
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeConsole\obj\Debug\TicTacToeConsole.csproj.CopyComplete
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeConsole\obj\Debug\TicTacToeConsole.exe
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeConsole\obj\Debug\TicTacToeConsole.pdb
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeConsole\obj\Debug\TicTacToeConsole.csproj.AssemblyReference.cache

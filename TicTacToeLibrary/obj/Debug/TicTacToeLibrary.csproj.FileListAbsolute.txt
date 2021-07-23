@@ -1,0 +1,6 @@
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeLibrary\bin\Debug\TicTacToeLibrary.dll
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeLibrary\bin\Debug\TicTacToeLibrary.pdb
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeLibrary\obj\Debug\TicTacToeLibrary.csproj.CoreCompileInputs.cache
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeLibrary\obj\Debug\TicTacToeLibrary.dll
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeLibrary\obj\Debug\TicTacToeLibrary.pdb
+D:\ElevenFiftyProjects\GoldBadge\Assignments\TicTacToeGame\TicTacToeLibrary\obj\Debug\TicTacToeLibrary.csproj.AssemblyReference.cache
