@@ -26,25 +26,33 @@ namespace TicTacToeLibrary
 
         public IReadOnlyList<Square> GetSquares()
         {
-            return _squares.ToList();
+            return _squares;
         }
 
         public bool ChangeSquare(int index, Square square)
         {
-            if (square == Square.Empty)
+            if (IndexIsInBounds(index) && CurrentSquareIsEmpty(index) && ReplacementSquareIsNotEmpty(square))
             {
-                return false;
-            }
-            if (index >= 0 && index < _squares.Length)
-            {
-                if (_squares[index] == Square.Empty)
-                {
-                    _squares[index] = square;
-                    _moveCount++;
-                    return true;
-                }
+                _squares[index] = square;
+                _moveCount++;
+                return true;
             }
             return false;
+        }
+
+        private bool IndexIsInBounds(int index)
+        {
+            return (index >= 0) && (index < _squares.Length);
+        }
+
+        private bool CurrentSquareIsEmpty(int index)
+        {
+            return _squares[index] == Square.Empty;
+        }
+
+        private bool ReplacementSquareIsNotEmpty(Square square)
+        {
+            return square != Square.Empty;
         }
 
         public bool GameHasNoMoreMoves()
@@ -66,7 +74,7 @@ namespace TicTacToeLibrary
 
         private bool CheckColumns()
         {
-            return Check(0, 3, 6)
+            return Check(0, 3, 6) 
                 || Check(1, 4, 7)
                 || Check(2, 5, 8);
         }
