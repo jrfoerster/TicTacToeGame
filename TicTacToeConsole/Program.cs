@@ -8,6 +8,7 @@ namespace TicTacToeConsole
         {
             var program = new ProgramUI();
             program.Run();
+            Console.WriteLine();
         }
     }
 }

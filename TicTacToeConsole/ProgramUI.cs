@@ -14,7 +14,6 @@ namespace TicTacToeConsole
                 LoopGame();
                 isRunning = IsPlayingAgain();
             }
-            Console.WriteLine();
         }
 
         private bool IsPlayingAgain()
@@ -37,8 +36,8 @@ namespace TicTacToeConsole
 
                 Square playerSquare = isPlayerX ? Square.X : Square.O;
                 int index = GetIndexToPlace(playerSquare);
-
                 bool wasChanged = board.ChangeSquare(index, playerSquare);
+
                 if (wasChanged)
                 {
                     isLoopingGame = IsLoopingGame(board, playerSquare);
@@ -58,7 +57,7 @@ namespace TicTacToeConsole
             else if (board.GameHasNoMoreMoves())
             {
                 ViewTicTacToe(board);
-                Console.WriteLine($"Tie Game!");
+                Console.WriteLine("Tie Game!");
                 return false;
             }
             else
@@ -91,7 +90,7 @@ namespace TicTacToeConsole
 
         private void PrintTicTacToe(TicTacToe board)
         {
-            List<Square> squares = board.GetSquares();
+            IReadOnlyList<Square> squares = board.GetSquares();
 
             Console.WriteLine($" {StringOf(squares[0])} | {StringOf(squares[1])} | {StringOf(squares[2])} ");
             Console.WriteLine("-----------");

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TicTacToeLibrary
@@ -23,7 +24,7 @@ namespace TicTacToeLibrary
             }
         }
 
-        public List<Square> GetSquares()
+        public IReadOnlyList<Square> GetSquares()
         {
             return _squares.ToList();
         }

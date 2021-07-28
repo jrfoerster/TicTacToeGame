@@ -31,6 +31,7 @@ namespace UnitTests
         [DataTestMethod]
         [DataRow(Square.X)]
         [DataRow(Square.O)]
+        [DataRow(Square.Empty)]
         public void TicTacToe_ChangeSquareFromX_ReturnsFalse(Square square)
         {
             var board = new TicTacToe();
@@ -43,6 +44,7 @@ namespace UnitTests
         [DataTestMethod]
         [DataRow(Square.X)]
         [DataRow(Square.O)]
+        [DataRow(Square.Empty)]
         public void TicTacToe_ChangeSquareFromO_ReturnsFalse(Square square)
         {
             var board = new TicTacToe();
@@ -76,14 +78,9 @@ namespace UnitTests
         [DataRow(0, 1, 2)]
         [DataRow(3, 4, 5)]
         [DataRow(6, 7, 8)]
-        public void TicTacToe_GameIsWonRow_ReturnsTrue(int a, int b, int c)
+        public void TicTacToe_GameIsWonRow_ReturnsTrue(params int[] indexes)
         {
-            var board = new TicTacToe();
-            var square = Square.X;
-            board.ChangeSquare(a, square);
-            board.ChangeSquare(b, square);
-            board.ChangeSquare(c, square);
-            bool condition = board.GameIsWon();
+            bool condition = CheckIndexesForWin(indexes);
             Assert.IsTrue(condition);
         }
 
@@ -91,29 +88,30 @@ namespace UnitTests
         [DataRow(0, 3, 6)]
         [DataRow(1, 4, 7)]
         [DataRow(2, 5, 8)]
-        public void TicTacToe_GameIsWonColumn_ReturnsTrue(int a, int b, int c)
+        public void TicTacToe_GameIsWonColumn_ReturnsTrue(params int[] indexes)
         {
-            var board = new TicTacToe();
-            var square = Square.X;
-            board.ChangeSquare(a, square);
-            board.ChangeSquare(b, square);
-            board.ChangeSquare(c, square);
-            bool condition = board.GameIsWon();
+            bool condition = CheckIndexesForWin(indexes);
             Assert.IsTrue(condition);
         }
 
         [DataTestMethod]
         [DataRow(0, 4, 8)]
         [DataRow(2, 4, 6)]
-        public void TicTacToe_GameIsWonDiagonal_ReturnsTrue(int a, int b, int c)
+        public void TicTacToe_GameIsWonDiagonal_ReturnsTrue(params int[] indexes)
+        {
+            bool condition = CheckIndexesForWin(indexes);
+            Assert.IsTrue(condition);
+        }
+
+        private bool CheckIndexesForWin(int[] indexes)
         {
             var board = new TicTacToe();
             var square = Square.X;
-            board.ChangeSquare(a, square);
-            board.ChangeSquare(b, square);
-            board.ChangeSquare(c, square);
-            bool condition = board.GameIsWon();
-            Assert.IsTrue(condition);
+            foreach (int index in indexes)
+            {
+                board.ChangeSquare(index, square);
+            }
+            return board.GameIsWon();
         }
 
         [TestMethod]
