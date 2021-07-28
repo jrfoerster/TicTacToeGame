@@ -39,25 +39,31 @@ namespace TicTacToeConsole
                 int index = GetIndexToPlace(playerSquare);
 
                 bool wasChanged = board.ChangeSquare(index, playerSquare);
-                if (wasChanged == false)
+                if (wasChanged)
                 {
-                    continue;  // Start the game loop over again without changing anything
+                    isLoopingGame = IsLoopingGame(board, playerSquare);
+                    isPlayerX = !isPlayerX;
                 }
+            }
+        }
 
-                if (board.GameIsWon())
-                {
-                    ViewTicTacToe(board);
-                    Console.WriteLine($"{playerSquare} Wins!");
-                    isLoopingGame = false;
-                }
-                else if (board.GameHasNoMoreMoves())
-                {
-                    ViewTicTacToe(board);
-                    Console.WriteLine($"Tie Game!");
-                    isLoopingGame = false;
-                }
-
-                isPlayerX = !isPlayerX;
+        private bool IsLoopingGame(TicTacToe board, Square playerSquare)
+        {
+            if (board.GameIsWon())
+            {
+                ViewTicTacToe(board);
+                Console.WriteLine($"{playerSquare} Wins!");
+                return false;
+            }
+            else if (board.GameHasNoMoreMoves())
+            {
+                ViewTicTacToe(board);
+                Console.WriteLine($"Tie Game!");
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 
