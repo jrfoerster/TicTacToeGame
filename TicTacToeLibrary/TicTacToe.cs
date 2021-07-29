@@ -85,6 +85,16 @@ namespace TicTacToeLibrary
                 || Check(2, 4, 6);
         }
 
+        private bool Check(int a, int b, int c)
+        {
+            return Check(_squares[a], _squares[b], _squares[c]);
+        }
+
+        private bool Check(Square one, Square two, Square three)
+        {
+            return (one != Square.Empty) && (one == two) && (one == three);
+        }
+
         //private bool CheckRows()
         //{
         //    int length = (int)Math.Sqrt(_squares.Length);
@@ -120,16 +130,6 @@ namespace TicTacToeLibrary
         //    }
         //    return output;
         //}
-
-        private bool Check(int a, int b, int c)
-        {
-            return Check(_squares[a], _squares[b], _squares[c]);
-        }
-
-        private bool Check(Square one, Square two, Square three)
-        {
-            return (one != Square.Empty) && (one == two) && (one == three);
-        }
 
         //private bool Check(params int[] indexes)
         //{
