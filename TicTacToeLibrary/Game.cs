@@ -18,16 +18,25 @@ namespace TicTacToeLibrary
             bool wasChanged = _board.ChangeSquare(index, PlayerSquare);
             if (wasChanged)
             {
-                IsWon = _board.IsWon;
-                HasNoMoreMoves = _board.HasNoMoreMoves;
-                IsActive = (IsWon == false) && (HasNoMoreMoves == false);
-
-                if (IsWon == false)
-                {
-                    _isPlayerX = !_isPlayerX;
-                }
+                UpdateProperties();
+                SwitchPlayer();
             }
             return wasChanged;
+        }
+
+        private void UpdateProperties()
+        {
+            IsWon = _board.IsWon;
+            HasNoMoreMoves = _board.HasNoMoreMoves;
+            IsActive = (IsWon == false) && (HasNoMoreMoves == false);
+        }
+
+        private void SwitchPlayer()
+        {
+            if (IsWon == false)
+            {
+                _isPlayerX = !_isPlayerX;
+            }
         }
     }
 }

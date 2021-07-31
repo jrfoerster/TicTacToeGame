@@ -10,40 +10,46 @@ namespace TicTacToeConsole
         {
             do
             {
-                LoopGame();
+                Play();
             } while (IsPlayingAgain());
         }
 
         private bool IsPlayingAgain()
         {
             var exitKey = ConsoleKey.Escape;
-            Console.Write($"Press any key to play again. Press {exitKey} to exit");
+            Console.Write($"Press any key to play again. Press {exitKey} to exit: ");
             var input = Console.ReadKey();
             return input.Key != exitKey;
         }
 
-        private void LoopGame()
+        private void Play()
         {
             var game = new Game();
+            Loop(game);
+            EndOf(game);
+        }
 
+        private void Loop(Game game)
+        {
             do
             {
                 ViewTicTacToe(game);
-
                 int index = GetIndexToPlace(game.PlayerSquare);
                 game.ChangeSquare(index);
-
-                if (game.IsWon)
-                {
-                    ViewTicTacToe(game);
-                    Console.WriteLine($"{game.PlayerSquare} Wins!");
-                }
-                else if (game.HasNoMoreMoves)
-                {
-                    ViewTicTacToe(game);
-                    Console.WriteLine("Tie Game!");
-                }
             } while (game.IsActive);
+        }
+
+        private void EndOf(Game game)
+        {
+            ViewTicTacToe(game);
+            if (game.IsWon)
+            {
+                Console.WriteLine($"{game.PlayerSquare} Wins!");
+            }
+            else if (game.HasNoMoreMoves)
+            {
+                Console.WriteLine("Tie Game!");
+            }
         }
 
         private int GetIndexToPlace(Square square)
