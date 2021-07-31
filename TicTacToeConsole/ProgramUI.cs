@@ -8,12 +8,10 @@ namespace TicTacToeConsole
     {
         public void Run()
         {
-            bool isRunning = true;
-            while (isRunning)
+            do
             {
                 LoopGame();
-                isRunning = IsPlayingAgain();
-            }
+            } while (IsPlayingAgain());
         }
 
         private bool IsPlayingAgain()
@@ -26,44 +24,26 @@ namespace TicTacToeConsole
 
         private void LoopGame()
         {
-            var board = new TicTacToe();
-            bool isPlayerX = true;
-            bool isLoopingGame = true;
+            var game = new Game();
 
-            while (isLoopingGame)
+            do
             {
-                ViewTicTacToe(board);
+                ViewTicTacToe(game);
 
-                Square playerSquare = isPlayerX ? Square.X : Square.O;
-                int index = GetIndexToPlace(playerSquare);
-                bool wasChanged = board.ChangeSquare(index, playerSquare);
+                int index = GetIndexToPlace(game.PlayerSquare);
+                game.ChangeSquare(index);
 
-                if (wasChanged)
+                if (game.IsWon)
                 {
-                    isLoopingGame = IsLoopingGame(board, playerSquare);
-                    isPlayerX = !isPlayerX;
+                    ViewTicTacToe(game);
+                    Console.WriteLine($"{game.PlayerSquare} Wins!");
                 }
-            }
-        }
-
-        private bool IsLoopingGame(TicTacToe board, Square playerSquare)
-        {
-            if (board.GameIsWon())
-            {
-                ViewTicTacToe(board);
-                Console.WriteLine($"{playerSquare} Wins!");
-                return false;
-            }
-            else if (board.GameHasNoMoreMoves())
-            {
-                ViewTicTacToe(board);
-                Console.WriteLine("Tie Game!");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+                else if (game.HasNoMoreMoves)
+                {
+                    ViewTicTacToe(game);
+                    Console.WriteLine("Tie Game!");
+                }
+            } while (game.IsActive);
         }
 
         private int GetIndexToPlace(Square square)
@@ -81,16 +61,16 @@ namespace TicTacToeConsole
             }
         }
 
-        private void ViewTicTacToe(TicTacToe board)
+        private void ViewTicTacToe(Game game)
         {
             Console.Clear();
-            PrintTicTacToe(board);
+            PrintTicTacToe(game);
             Console.WriteLine();
         }
 
-        private void PrintTicTacToe(TicTacToe board)
+        private void PrintTicTacToe(Game game)
         {
-            IReadOnlyList<Square> squares = board.GetSquares();
+            IReadOnlyList<Square> squares = game.Squares;
 
             Console.WriteLine($" {StringOf(squares[0])} | {StringOf(squares[1])} | {StringOf(squares[2])} ");
             Console.WriteLine("-----------");
