@@ -2,13 +2,6 @@
 
 namespace TicTacToeLibrary
 {
-    public enum Square
-    {
-        X,
-        O,
-        Empty
-    }
-
     public class TicTacToe
     {
         private readonly Square[] _squares = new Square[9];
