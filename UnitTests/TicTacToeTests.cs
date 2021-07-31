@@ -11,7 +11,7 @@ namespace UnitTests
         public void TicTacToe_NewGame_SquaresAreEmpty()
         {
             var board = new TicTacToe();
-            foreach (var square in board.GetSquares())
+            foreach (var square in board.Squares)
             {
                 Console.WriteLine(square);
                 Assert.AreEqual(square, Square.Empty);
@@ -57,6 +57,8 @@ namespace UnitTests
         [DataTestMethod]
         [DataRow(-1)]
         [DataRow(9)]
+        [DataRow(int.MaxValue)]
+        [DataRow(int.MinValue)]
         public void TicTacToe_ChangeSquareIndexOutOfBounds_ReturnsFalse(int index)
         {
             var board = new TicTacToe();
@@ -105,20 +107,21 @@ namespace UnitTests
 
         private bool CheckIndexesForWin(int[] indexes)
         {
-            var board = new TicTacToe();
-            var square = Square.X;
+            var boardX = new TicTacToe();
+            var boardO = new TicTacToe();
             foreach (int index in indexes)
             {
-                board.ChangeSquare(index, square);
+                boardX.ChangeSquare(index, Square.X);
+                boardO.ChangeSquare(index, Square.O);
             }
-            return board.GameIsWon();
+            return boardX.IsWon && boardO.IsWon;
         }
 
         [TestMethod]
         public void TicTacToe_NewGameIsWon_ReturnsFalse()
         {
             var board = new TicTacToe();
-            bool condition = board.GameIsWon();
+            bool condition = board.IsWon;
             Assert.IsFalse(condition);
         }
 
@@ -126,7 +129,7 @@ namespace UnitTests
         public void TicTacToe_NewGameHasNoMoreMoves_ReturnsFalse()
         {
             var board = new TicTacToe();
-            bool condition = board.GameHasNoMoreMoves();
+            bool condition = board.HasNoMoreMoves;
             Assert.IsFalse(condition);
         }
 
@@ -143,7 +146,7 @@ namespace UnitTests
             board.ChangeSquare(6, Square.X);
             board.ChangeSquare(7, Square.O);
             board.ChangeSquare(8, Square.X);
-            bool condition = board.GameHasNoMoreMoves();
+            bool condition = board.HasNoMoreMoves;
             Assert.IsTrue(condition);
         }
     }
