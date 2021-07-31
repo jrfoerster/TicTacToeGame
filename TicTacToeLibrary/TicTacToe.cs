@@ -16,17 +16,16 @@ namespace TicTacToeLibrary
         private readonly Square[] _squares = new Square[9];
         private int _moveCount = 0;
 
+        public IReadOnlyList<Square> Squares => _squares;
+        public bool IsWon => CheckRows() || CheckColumns() || CheckDiagonals();
+        public bool HasNoMoreMoves => _moveCount == _squares.Length;
+
         public TicTacToe()
         {
             for (int i = 0; i < _squares.Length; i++)
             {
                 _squares[i] = Square.Empty;
             }
-        }
-
-        public IReadOnlyList<Square> GetSquares()
-        {
-            return _squares;
         }
 
         public bool ChangeSquare(int index, Square square)
@@ -55,16 +54,6 @@ namespace TicTacToeLibrary
             return square != Square.Empty;
         }
 
-        public bool GameHasNoMoreMoves()
-        {
-            return _moveCount == _squares.Length;
-        }
-
-        public bool GameIsWon()
-        {
-            return CheckRows() || CheckColumns() || CheckDiagonals();
-        }
-
         private bool CheckRows()
         {
             return Check(0, 1, 2)
@@ -74,7 +63,7 @@ namespace TicTacToeLibrary
 
         private bool CheckColumns()
         {
-            return Check(0, 3, 6) 
+            return Check(0, 3, 6)
                 || Check(1, 4, 7)
                 || Check(2, 5, 8);
         }
