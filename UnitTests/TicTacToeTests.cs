@@ -8,7 +8,7 @@ namespace UnitTests
     public class TicTacToeTests
     {
         [TestMethod]
-        public void TicTacToe_NewGame_SquaresAreEmpty()
+        public void TicTacToe_NewBoard_SquaresAreEmpty()
         {
             var board = new TicTacToe();
             foreach (var square in board.Squares)
@@ -118,7 +118,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TicTacToe_NewGameIsWon_ReturnsFalse()
+        public void TicTacToe_NewBoardIsWon_ReturnsFalse()
         {
             var board = new TicTacToe();
             bool condition = board.IsWon;
@@ -126,7 +126,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TicTacToe_NewGameHasNoMoreMoves_ReturnsFalse()
+        public void TicTacToe_NewBoardHasNoMoreMoves_ReturnsFalse()
         {
             var board = new TicTacToe();
             bool condition = board.HasNoMoreMoves;
@@ -134,7 +134,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TicTacToe_GameHasNoMoreMoves_ReturnsTrue()
+        public void TicTacToe_HasNoMoreMoves_ReturnsTrue()
         {
             var board = new TicTacToe();
             board.ChangeSquare(0, Square.O);
