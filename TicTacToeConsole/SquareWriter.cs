@@ -16,11 +16,11 @@ namespace TicTacToeConsole
         public void Write()
         {
             Console.Clear();
-            WriteTicTacToe();
+            WriteSquares();
             Console.WriteLine();
         }
 
-        private void WriteTicTacToe()
+        private void WriteSquares()
         {
             Console.WriteLine($" {StringOf(0)} | {StringOf(1)} | {StringOf(2)} ");
             Console.WriteLine("-----------");
