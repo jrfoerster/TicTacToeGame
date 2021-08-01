@@ -35,11 +35,11 @@ namespace TicTacToeConsole
             writer.WriteSquares();
 
             do
-            {             
+            {
                 int index = GetIndexToPlace(game.PlayerSquare);
                 game.ChangeSquare(index);
                 writer.WriteSquares();
-            } while (game.IsActive);          
+            } while (game.IsActive);
         }
 
         private void EndOf(Game game)
