@@ -31,17 +31,18 @@ namespace TicTacToeConsole
 
         private void Loop(Game game)
         {
+            var writer = new SquareWriter(game.Squares);
             do
             {
-                ViewTicTacToe(game);
+                writer.Write();
                 int index = GetIndexToPlace(game.PlayerSquare);
                 game.ChangeSquare(index);
             } while (game.IsActive);
+            writer.Write();
         }
 
         private void EndOf(Game game)
         {
-            ViewTicTacToe(game);
             if (game.IsWon)
             {
                 Console.WriteLine($"{game.PlayerSquare} Wins!");
@@ -64,36 +65,6 @@ namespace TicTacToeConsole
             else
             {
                 return -1;  // This value is not valid, TicTacToe will not change
-            }
-        }
-
-        private void ViewTicTacToe(Game game)
-        {
-            Console.Clear();
-            PrintTicTacToe(game);
-            Console.WriteLine();
-        }
-
-        private void PrintTicTacToe(Game game)
-        {
-            IReadOnlyList<Square> squares = game.Squares;
-
-            Console.WriteLine($" {StringOf(squares[0])} | {StringOf(squares[1])} | {StringOf(squares[2])} ");
-            Console.WriteLine("-----------");
-            Console.WriteLine($" {StringOf(squares[3])} | {StringOf(squares[4])} | {StringOf(squares[5])} ");
-            Console.WriteLine("-----------");
-            Console.WriteLine($" {StringOf(squares[6])} | {StringOf(squares[7])} | {StringOf(squares[8])} ");
-        }
-
-        private string StringOf(Square square)
-        {
-            if (square == Square.Empty)
-            {
-                return " ";
-            }
-            else
-            {
-                return square.ToString();
             }
         }
     }
