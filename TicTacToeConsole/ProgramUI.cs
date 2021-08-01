@@ -32,13 +32,14 @@ namespace TicTacToeConsole
         private void Loop(Game game)
         {
             var writer = new SquareWriter(game.Squares);
+            writer.WriteSquares();
+
             do
-            {
-                writer.Write();
+            {             
                 int index = GetIndexToPlace(game.PlayerSquare);
                 game.ChangeSquare(index);
-            } while (game.IsActive);
-            writer.Write();
+                writer.WriteSquares();
+            } while (game.IsActive);          
         }
 
         private void EndOf(Game game)

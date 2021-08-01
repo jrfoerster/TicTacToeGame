@@ -13,14 +13,14 @@ namespace TicTacToeConsole
             _squares = squares;
         }
 
-        public void Write()
+        public void WriteSquares()
         {
             Console.Clear();
-            WriteSquares();
+            WriteAll();
             Console.WriteLine();
         }
 
-        private void WriteSquares()
+        private void WriteAll()
         {
             WriteRow(0, 1, 2);
             WriteRowSeparator();
