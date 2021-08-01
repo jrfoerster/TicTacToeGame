@@ -4,40 +4,44 @@ namespace TicTacToeLibrary
 {
     internal class WinCondition
     {
-        private static IReadOnlyList<Square> _squares;
+        private readonly IReadOnlyList<Square> _squares;
 
-        public static bool Check(IReadOnlyList<Square> squares)
+        public WinCondition(IReadOnlyList<Square> squares)
         {
             _squares = squares;
+        }
+
+        public bool Check()
+        {
             return CheckRows() || CheckColumns() || CheckDiagonals();
         }
 
-        private static bool CheckRows()
+        private bool CheckRows()
         {
             return Check(0, 1, 2)
                 || Check(3, 4, 5)
                 || Check(6, 7, 8);
         }
 
-        private static bool CheckColumns()
+        private bool CheckColumns()
         {
             return Check(0, 3, 6)
                 || Check(1, 4, 7)
                 || Check(2, 5, 8);
         }
 
-        private static bool CheckDiagonals()
+        private bool CheckDiagonals()
         {
             return Check(0, 4, 8)
                 || Check(2, 4, 6);
         }
 
-        private static bool Check(int a, int b, int c)
+        private bool Check(int a, int b, int c)
         {
             return Check(_squares[a], _squares[b], _squares[c]);
         }
 
-        private static bool Check(Square one, Square two, Square three)
+        private bool Check(Square one, Square two, Square three)
         {
             return (one != Square.Empty) && (one == two) && (one == three);
         }
