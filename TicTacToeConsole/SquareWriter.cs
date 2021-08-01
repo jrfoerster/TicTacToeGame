@@ -22,11 +22,24 @@ namespace TicTacToeConsole
 
         private void WriteSquares()
         {
-            Console.WriteLine($" {StringOf(0)} | {StringOf(1)} | {StringOf(2)} ");
+            WriteRow(0, 1, 2);
+            WriteRowSeparator();
+            WriteRow(3, 4, 5);
+            WriteRowSeparator();
+            WriteRow(6, 7, 8);
+        }
+
+        private void WriteRow(int a, int b, int c)
+        {
+            string x = StringOf(a);
+            string y = StringOf(b);
+            string z = StringOf(c);
+            Console.WriteLine($" {x} | {y} | {z} ");
+        }
+
+        private void WriteRowSeparator()
+        {
             Console.WriteLine("-----------");
-            Console.WriteLine($" {StringOf(3)} | {StringOf(4)} | {StringOf(5)} ");
-            Console.WriteLine("-----------");
-            Console.WriteLine($" {StringOf(6)} | {StringOf(7)} | {StringOf(8)} ");
         }
 
         private string StringOf(int index)
