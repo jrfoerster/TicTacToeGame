@@ -48,7 +48,7 @@ namespace TicTacToeConsole
             {
                 Console.WriteLine($"{game.PlayerSquare} Wins!");
             }
-            else if (game.HasNoMoreMoves)
+            else
             {
                 Console.WriteLine("Tie Game!");
             }
